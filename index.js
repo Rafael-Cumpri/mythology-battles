@@ -61,6 +61,17 @@ app.put('/heroes/:id', async (req, res) => {
     }
 });
 
+app.delete('/heroes/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const result = await pool.query('DELETE FROM herois WHERE id = $1', [id]);
+        res.json({ message: 'Hero deleted successfully' });
+    } catch (error) {
+        console.error('Error executing query', error);
+        res.json({ error: error.message });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
