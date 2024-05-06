@@ -49,6 +49,18 @@ app.post('/heroes', async (req, res) => {
     }
 });
 
+app.put('/heroes/:id', async (req, res) => {
+    const { id } = req.params;
+    const { nome, bencaodivina, forca, resistencia, velocidade, bencaooumaldicaoo, equipamento } = req.body;
+    try {
+        const result = await pool.query('UPDATE herois SET nome = $1, bencaodivina = $2, forca = $3, resistencia = $4, velocidade = $5, bencaooumaldicaoo = $6, equipamento = $7 WHERE id = $8 RETURNING *', [nome, bencaodivina, forca, resistencia, velocidade, bencaooumaldicaoo, equipamento, id]);
+        res.json(result.rows[0]);
+    } catch (error) {
+        console.error('Error executing query', error);
+        res.json({ error: error.message });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
