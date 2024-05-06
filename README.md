@@ -34,15 +34,15 @@ Este é um projeto que simula batalhas entre heróis da mitologia grega, onde vo
 
 O servidor estará rodando em http://localhost:3036.
 
-### Endpoints da API
+## Endpoints da API
 
 - `GET /heroes`: Retorna todos os heróis cadastrados.
-- `GET /heroes/:id`: Retorna as informações de um herói específico pelo ID.
+- `GET /heroes/:param`: Retorna as informações de um herói específico pelo ID ou pelo nome.
 - `POST /heroes`: Cria um novo herói.
 - `PUT /heroes/:id`: Atualiza as informações de um herói existente.
 - `DELETE /heroes/:id`: Remove um herói do banco de dados.
 - `GET /battles`: Retorna todas as batalhas registradas, incluindo os detalhes dos heróis vencedores.
-- `POST /heroes/combate/:id1/:id2`: Realiza um combate entre dois heróis, registrando o vencedor no banco de dados.
+- `GET /battles/:heroname`: Retorna as informações das batalhas em que um herói específico participou.
 
 ### Estrutura do Banco de Dados
 
